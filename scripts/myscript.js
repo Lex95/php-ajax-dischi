@@ -3,6 +3,17 @@ const app = new Vue({
     data: {
         listaDischi: []
     },
+    // computed: {
+    //     getGenres() {
+    //         var result = [];
+    //         this.listaDischi.forEach(element => {
+    //             if (!result.includes(element.genre)) {
+    //                 result.push(element.genre)
+    //             }
+    //         });
+    //         return result;
+    //     }
+    // },
     methods: {
         getDischi() {
             axios.get("http://localhost/Boolean_php/php-ajax-dischi/partials/data.php").then((resp) => {

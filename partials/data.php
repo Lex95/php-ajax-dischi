@@ -73,8 +73,27 @@ $data = [
     ]
 ];
 
+$genre = isset($_GET["genre"]) ? $_GET["genre"] : null;
+
+if ($genre) {
+    $result = [];
+    for ($i = 0; $i < count($data); $i++) {
+        foreach ($data[$i] as $key => $value) {
+            if ($key == "genre") {
+                if ($value == $genre) {
+                    $result[] = $data[$i];
+                }
+            }
+        }
+    }
+}
+
 header("Content-Type: application/json");
 
-echo json_encode($data);
+if ($genre) {
+    echo json_encode($result);
+} else {
+    echo json_encode($data);
+}
 
 ?>
