@@ -1,7 +1,8 @@
 const app = new Vue({
     el: "#app",
     data: {
-        listaDischi: []
+        listaDischi: [],
+        genreQuery: ""
     },
     // computed: {
     //     getGenres() {
@@ -16,7 +17,12 @@ const app = new Vue({
     // },
     methods: {
         getDischi() {
-            axios.get("http://localhost/Boolean_php/php-ajax-dischi/partials/data.php").then((resp) => {
+            const axiosParameters = {
+                params: {
+                    genre: this.genreQuery
+                }
+            }
+            axios.get("http://localhost/Boolean_php/php-ajax-dischi/partials/data.php", axiosParameters).then((resp) => {
                 this.listaDischi = resp.data;
             }).catch((er) => {
                 alert("Errore nel caricamento dei dati");
