@@ -22,6 +22,7 @@ const app = new Vue({
                     genre: this.genreQuery
                 }
             }
+            // anche con percorso relativo "partials/data.php"
             axios.get("http://localhost/Boolean_php/php-ajax-dischi/partials/data.php", axiosParameters).then((resp) => {
                 this.listaDischi = resp.data;
             }).catch((er) => {
